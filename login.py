@@ -67,17 +67,17 @@ def login_account(playwright, USER, PWD):
         page = context.new_page()
 
         page.goto("https://www.netlib.re/")
-        time.sleep(5)
+        time.sleep(20)
 
         page.get_by_text("Login").click()
-        time.sleep(2)
+        time.sleep(10)
         page.get_by_role("textbox", name="Username").fill(USER)
-        time.sleep(2)
+        time.sleep(18)
         page.get_by_role("textbox", name="Password").fill(PWD)
-        time.sleep(2)
+        time.sleep(15)
         page.get_by_role("button", name="Validate").click()
         page.wait_for_load_state("networkidle")
-        time.sleep(2)
+        time.sleep(10)
 
         success_text = "You are the exclusive owner of the following domains."
         if page.query_selector(f"text={success_text}"):
@@ -104,7 +104,7 @@ def run():
     with sync_playwright() as playwright:
         for acc in accounts:
             login_account(playwright, acc["username"], acc["password"])
-            time.sleep(2)
+            time.sleep(60)
 
 if __name__ == "__main__":
     run()
