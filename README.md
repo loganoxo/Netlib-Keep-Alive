@@ -4,7 +4,7 @@
 
 本项目用于自动登录 [Netlib.re](https://www.netlib.re/) 网站，实现账号保活。适用于需要每隔一段时间（如 30 天）登录一次的网站场景。支持多账号循环登录、登录失败判定、延迟和网页加载等待，防止被风控。支持 GitHub Actions 自动运行（无头模式），成功登录后停留 5 秒，用于保活或刷新 Cookie。仅用于登录保活，不涉及敏感操作。
 
-详细图文教程请查看[Netlib免费域名保活方法](https://blog.voocv.com/post/Netlib)
+详细图文教程请查看[Netlib免费域名保活方法](https://blog.voocv.com/post/Netlib/)
   
    **⚠️随着Fork数量增加，为了避免风控，强烈建议Fork后
    自行修改`.github/workflows/keepalive.yml`的第五行`- cron: "0 0 1,31 * *"`，其中的1和31，修改为`1-31`任意两个数字**
