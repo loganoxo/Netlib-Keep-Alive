@@ -1,0 +1,39 @@
+name: Keep Alive Login
+
+on:
+  # schedule 触发器仅在默认分支(Default Branch)上生效
+  schedule:
+    - cron: "32 18 1,20,30 * *"  # 每月 1 20 30 号 UTC时间(18点32分) 对应北京时间(凌晨2点32分)
+    - cron: "12 19 7,15,25 * *"  # 每月 7 15 25 号 UTC时间(19点12分) 对应北京时间(凌晨3点12分)
+  workflow_dispatch:       # 支持手动触发
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        # 拉取logan分支的代码
+        with:
+          ref: logan
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Playwright
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests
+          python -m pip install playwright
+          python -m playwright install chromium
+
+      - name: Run Keep Alive Login
+        env:
+          SITE_ACCOUNTS: ${{ secrets.SITE_ACCOUNTS }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python login.py
