@@ -22,7 +22,7 @@ def send_tg_log():
 
     utc_now = datetime.utcnow()
     beijing_now = utc_now + timedelta(hours=8)
-    now_str = beijing_now.strftime("%Y-%m-%d %H:%M:%S") + " UTC+8"
+    now_str = "北京时间: " + beijing_now.strftime("%Y-%m-%d %H:%M:%S")
 
     final_msg = f"📌 Netlib 保活执行日志\n🕒 {now_str}\n\n" + "\n".join(log_buffer)
 
