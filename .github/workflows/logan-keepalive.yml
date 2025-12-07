@@ -1,4 +1,4 @@
-name: Keep Alive Login
+name: logan-keepalive
 
 on:
   # schedule 触发器仅在默认分支(Default Branch)上生效
