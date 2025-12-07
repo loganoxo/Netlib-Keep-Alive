@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        # 拉取logan分支的代码(因为schedule 触发器仅在默认分支(Default Branch)上生效)
+        # 拉取logan分支的代码 (因为schedule 触发器仅在默认分支(Default Branch)上生效)
         with:
           ref: logan
 
